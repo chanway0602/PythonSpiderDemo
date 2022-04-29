@@ -40,5 +40,3 @@ print(html)
 
 
 
-
-

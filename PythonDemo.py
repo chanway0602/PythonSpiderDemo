@@ -64,13 +64,22 @@ spiderpath = os.path.join(dirpath, 'spider.py')
 print(spiderpath)
 
 
-
+'''
 try:
     with open(os.path.join(dirpath, 'spider.py'), 'rb+') as file:
         file.write(b'111')
 
 except Exception as e:
         print(e)
+'''
 
 
+#字符串拼接的三种方式
+#1.直接字符串相加：
+xxx = '111' + '222'
 
+#2.使用format函数：
+yyy = 'this is {} {}'.format('demo', '2')
+
+#3.格式化拼接：
+zzz = 'Python No.%s' % '1'
