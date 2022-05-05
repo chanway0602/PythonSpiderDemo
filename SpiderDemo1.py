@@ -1,6 +1,7 @@
 # coding=utf-8
 
 #导入request请求库
+import encodings
 import random
 from urllib import request
 
@@ -35,6 +36,11 @@ res = request.urlopen(req)
 html = res.read().decode('utf-8')
 print(html)
 
+from urllib import parse
+quote = {'wd' : '爬虫'}
+encodings = parse.urlencode(quote)
+print(encodings)
+print(parse.unquote(encodings))
 
 
 
