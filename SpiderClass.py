@@ -59,9 +59,9 @@ class TiebaSpider(object):
 
     # 主函数，用来控制整体逻辑
     def run(self):
+        search_name = input('请输入要爬取的贴吧名\n')
         start_page  = int(input('请输入起始页\n'))
         end_page    = int(input('请输入结束页\n'))
-        search_name = input('请输入要爬取的贴吧名\n')
 
         #循环爬取指定页数
         for count_page in range(start_page, end_page+1):
