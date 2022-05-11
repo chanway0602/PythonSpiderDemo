@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 
 from fileinput import filename
 from importlib.resources import path
@@ -83,3 +83,27 @@ yyy = 'this is {} {}'.format('demo', '2')
 
 #3.格式化拼接：
 zzz = 'Python No.%s' % '1'
+
+
+print('\n')
+
+import requests
+url = 'https://img0.baidu.com/it/u=908725181,3965400702&fm=253&fmt=auto&app=138&f=JPEG?w=496&h=440'
+#url = 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=38785274,1357847304&fm=26&gp=0.jpg'
+# 简单定义浏览器ua信息
+headers = {'User-Agent':'Mozilla/4.0'}
+# 读取图片需要使用content属性
+html = requests.get(url=url,headers=headers).content
+# 以二进制的方式下载图片
+with open('python_logo.jpg','wb') as f:
+    f.write(html)
+
+import os
+a = os.getcwd()
+print(a)
+if not os.path.exists('111'):
+    b = os.mkdir('111')
+#os.path.join(a, b)
+print(b)
+
+
