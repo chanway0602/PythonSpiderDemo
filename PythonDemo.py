@@ -98,12 +98,9 @@ html = requests.get(url=url,headers=headers).content
 with open('python_logo.jpg','wb') as f:
     f.write(html)
 
-import os
-a = os.getcwd()
-print(a)
-if not os.path.exists('111'):
-    b = os.mkdir('111')
-#os.path.join(a, b)
-print(b)
+item = {}
+for i in range(1, 10):
+    item['num'] = i
+print(item)
 
 
