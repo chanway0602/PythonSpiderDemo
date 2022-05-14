@@ -12,27 +12,33 @@ import requests
 
 class BaiduSpider(object):
 
+    # 初始化
     def __init__(self):
         #https://image.baidu.com/search/flip?tn=baiduimage&word=python&pn=40
         self.url = 'https://image.baidu.com/search/flip?'
         self.headers = {'User-Agent':UserAgent().chrome}
+        # 正则表达式的pattern
         self.reg = '"hoverURL":"(.*?)"'
 
+    # 构造url的参数
     def make_params(self, word, pn):
         params = {'word':word, 'pn':pn}
 
         return params
 
+    # 获取html
     def get_html(self, params):
 
         res = requests.get(self.url, params=params, headers=self.headers)
         html = res.text
 
+        # 正则表达式筛选，获取图片列表
         pattern = re.compile(self.reg, re.S)
         img_list = pattern.findall(html)
 
         return img_list
 
+    # 保存图片
     def save_img(self, img_list, params):
         filepath = os.getcwd()
         if not os.path.exists(params['word']):
@@ -47,6 +53,7 @@ class BaiduSpider(object):
             print('{}:下载完成'.format(img_name))
             i += 1
 
+    # 运行
     def run(self):
         search_name = input('请输入要搜索的图片：')
         start_page  = int(input('请输入起始页：'))
@@ -57,6 +64,7 @@ class BaiduSpider(object):
             img_list = self.get_html(params)
             self.save_img(img_list, params)
 
+# 主函数
 def main():
     spider = BaiduSpider()
     spider.run()
