@@ -16,12 +16,9 @@ class LianjiaSpider(object):
     # 初始化
     def __init__(self) :
 
-        # 初始化一个ua
-        ua = UserAgent()
-
         self.url = 'https://bj.lianjia.com/ershoufang/pg{}/'
         # 使用随机的ua
-        self.headers = {'User-Agent':ua.random}
+        self.headers = {'User-Agent':UserAgent().random}
 
         '''
         /html/body/div[4]/div[1]/ul/li[2]
