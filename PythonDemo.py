@@ -98,9 +98,9 @@ html = requests.get(url=url,headers=headers).content
 with open('python_logo.jpg','wb') as f:
     f.write(html)
 
-item = {}
-for i in range(1, 10):
-    item['num'] = i
-print(item)
+item = {'website': 'C语言中文网', 'url': "c.biancheng.net"}
+for k,v in item.items():
+    print(k)
+    print(v)
 
 
