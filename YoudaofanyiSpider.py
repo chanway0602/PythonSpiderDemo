@@ -55,6 +55,7 @@ class YoudaoSpider(object):
     # 初始化
     def __init__(self):
         # 通用的，基本不变的类变量
+        # https://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule
         self.url = 'https://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule' # '_o'是为反爬加的字串，需要去掉
         self.headers = {'User-Agent':UserAgent().random}
 
