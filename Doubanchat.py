@@ -36,14 +36,15 @@ class DoubanchatSpiser(object):
     # 初始化
     def __init__(self):
         self.headers = {'User-Agent':UserAgent().random}
-        self.url_one = 'https://movie.douban.com/chart'
-        self.url_two = 'https://movie.douban.com/j/chart/top_list?'  
-        self.url_count = 'https://movie.douban.com/j/chart/top_list_count?'
+        self.url_one = 'https://movie.douban.com/chart' # 一级页面url
+        self.url_two = 'https://movie.douban.com/j/chart/top_list?'  # 二级页面url
+        self.url_count = 'https://movie.douban.com/j/chart/top_list_count?' # 电影个数url
 
     # 获取一级页面的类型菜单，和对应的类型号
     def get_menu(self):
         html = requests.get(url=self.url_one, headers=self.headers).text
 
+        # 正则表达式筛选电影类型和对应的num
         reg  = r'<span><a href=.*?type_name=(.*?)&type=(.*?)&interval_id.*?</span>'
         pattern = re.compile(reg, re.S)
         menu_list = pattern.findall(html)
@@ -55,6 +56,7 @@ class DoubanchatSpiser(object):
         #print(item)
         return item
 
+    # 获取该类型电影的个数
     def get_film_count(self, filmtype):
         item = self.get_menu()
         type_num = item[filmtype]
@@ -66,12 +68,14 @@ class DoubanchatSpiser(object):
 
         return res['total']
 
+    # 获取该类型的所有电影
     def get_film_total(self, filmtype):
         item = self.get_menu()
         type_num = item[filmtype]
         total_count = self.get_film_count(filmtype)
         print('{}类型的电影总共有{}部'.format(filmtype, total_count))
 
+        # 大字典储存所有电影信息
         total_film = {}
         for page in range(0, total_count, 20):
             #print(page)
@@ -91,13 +95,14 @@ class DoubanchatSpiser(object):
         
             print('第{}页爬取成功！'.format(page/20+1))
     
+    # 执行函数
     def run(self):
         item = self.get_menu()
         print(item.keys())
         filmtype = input('请输入你要查询的电影类型:\n')
         self.get_film_total(filmtype)
 
-    
+#主函数
 def main():
     spider = DoubanchatSpiser()
     spider.run()
@@ -106,8 +111,3 @@ def main():
 if __name__ == '__main__':
     main()    
         
-
-
-
-
-
