@@ -103,4 +103,17 @@ for k,v in item.items():
     print(k)
     print(v)
 
+import time
+print(time.time())
+print(time.ctime(1653535677))
+print(time.ctime(1652016212))
 
+
+if not os.path.exists('xxx'):
+    os.mkdir('xxx')
+
+file_dir = os.path.abspath('xxx')
+print(file_dir)
+file_path = os.path.join(file_dir, '111.mp4')
+print(file_path)
+print(os.getcwd())
