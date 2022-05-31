@@ -6,6 +6,8 @@ import logging
 from re import X
 from unicodedata import name
 
+from paramiko import Agent
+
 
 def Demo():
     xxx = 0
@@ -105,10 +107,11 @@ for k,v in item.items():
 
 import time
 print(time.time())
-print(time.ctime(1653535677))
-print(time.ctime(1652016212))
+print(time.ctime(1653366775))
+print(time.ctime(1653865646))
+print(time.ctime(1653892010))
 
-
+'''
 if not os.path.exists('xxx'):
     os.mkdir('xxx')
 
@@ -117,3 +120,17 @@ print(file_dir)
 file_path = os.path.join(file_dir, '111.mp4')
 print(file_path)
 print(os.getcwd())
+'''
+
+import requests
+from fake_useragent import UserAgent
+url = 'https://api2.pushdeer.com/message/push'
+params = {
+    'pushkey':'PDU9345TUh0hLQk42msCMH7iCOSbPdHwMY3CN9VP',
+    'text':'https://img1.baidu.com/it/u=700675537,3936578503&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
+    'type':'image'
+}
+headers = {
+    'User-Agent':UserAgent().random
+}
+requests.get(url=url, params=params, headers=headers)
