@@ -122,15 +122,3 @@ print(file_path)
 print(os.getcwd())
 '''
 
-import requests
-from fake_useragent import UserAgent
-url = 'https://api2.pushdeer.com/message/push'
-params = {
-    'pushkey':'PDU9345TUh0hLQk42msCMH7iCOSbPdHwMY3CN9VP',
-    'text':'https://img1.baidu.com/it/u=700675537,3936578503&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
-    'type':'image'
-}
-headers = {
-    'User-Agent':UserAgent().random
-}
-requests.get(url=url, params=params, headers=headers)
