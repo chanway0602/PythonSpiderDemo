@@ -10,11 +10,11 @@ with open('eggs.csv', 'w', newline='') as csvfile:
     spamwriter.writerow(['www.biancheng.net'] * 5 + ['how are you'])
     spamwriter.writerow(['hello world', 'web site', 'www.biancheng.net'])
     
-
 with open('eggs.csv', 'r', newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in spamreader:
         print(', '.join(row))
+
 
 with open('names.csv', 'w', newline='') as csvfile:
     #构建字段名称，也就是key
@@ -27,6 +27,9 @@ with open('names.csv', 'w', newline='') as csvfile:
     # 单行写入
     writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
 
-
+with open('names.csv', 'r', newline='') as csvfile:
+    spamreader = csv.DictReader(csvfile)
+    for row in spamreader:
+        print(row['first_name'] + ',' + row['last_name'])
 
 
